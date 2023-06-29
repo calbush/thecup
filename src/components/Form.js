@@ -1,4 +1,5 @@
 import { genres, providers } from '../assets'
+import Popularity from './Popularity'
 
 export default function Form({handleClick}) {
     return (
@@ -22,6 +23,7 @@ export default function Form({handleClick}) {
                     </div>
                 ))}
             </div>
+            <Popularity/>
             <button onClick={handleClick}>Search</button>
         </div>
     )
