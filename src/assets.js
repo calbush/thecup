@@ -113,6 +113,6 @@ export const providers = [
     },
     {
         'id': 283,
-        'name': "Cruncyroll"
+        'name': "Crunchyroll"
     }
 ]
