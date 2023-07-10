@@ -1,9 +1,9 @@
-export default function Popularity(){
+export default function Popularity({popularity, handleChange}){
 
     return (
         <div id='popularity-dropdown-container'>
-            <label htmlFor='popularity'>Film Popularity:</label>
-            <select name='popularity' id='popularity-dropdown'>
+            <label htmlFor='popularity-dropdown'>Film Popularity:</label>
+            <select name='popularity' id='popularity-dropdown' onChange={handleChange} value={popularity}>
                 <option value='any'>Any</option>
                 <option value='popular'>Popular</option>
                 <option value='less-popular'>Less Popular</option>
