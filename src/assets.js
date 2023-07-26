@@ -81,38 +81,82 @@ export const genres = [
 export const providers = [
     {
         'id': 8,
-        'name': 'Netflix'
+        'name': 'Netflix',
+        'logo_path': '/t2yyOv40HZeVlLjYsCsPHnWLk4W.jpg'
     },
     {
         'id': 9,
-        'name': 'Amazon Prime Video'
+        'name': 'Amazon Prime Video',
+        'logo_path': '/emthp39XA2YScoYL1p0sdbAH2WA.jpg'
     },
     {
         'id': 337,
-        'name': 'Disney Plus'
+        'name': 'Disney Plus',
+        'logo_path': '/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg'
     },
     {
         'id': 350,
-        'name': 'Apple TV Plus'
+        'name': 'Apple TV Plus',
+        'logo_path': '/6uhKBfmtzFqOcLousHwZuzcrScK.jpg'
     },
     {
         'id': 2,
-        'name': 'Apple TV'
+        'name': 'Apple TV',
+        'logo_path': '/peURlLlr8jggOwK53fJ5wdQl05y.jpg'
     },
     {
         'id': 15,
-        'name': 'Hulu'
+        'name': 'Hulu',
+        'logo_path': '/zxrVdFjIjLqkfnwyghnfywTn3Lh.jpg'
     },
     {
         'id': 1899,
-        'name': 'Max'
+        'name': 'Max',
+        'logo_path': '/6Q3ZYUNA9Hsgj6iWnVsw2gR5V6z.jpg'
     },
     {
         'id': 386,
-        'name': 'Peacock'
+        'name': 'Peacock',
+        'logo_path': '/8VCV78prwd9QzZnEm0ReO6bERDa.jpg'
     },
     {
         'id': 283,
-        'name': "Crunchyroll"
+        'name': "Crunchyroll",
+        'logo_path': '/8Gt1iClBlzTeQs8WQm8UrCoIxnQ.jpg'
+    },
+    {
+        'id': 257,
+        'name': 'fuboTV',
+        'logo_path': '/jPXksae158ukMLFhhlNvzsvaEyt.jpg'
+    },
+    {
+        "logo_path": "/xTHltMrZPAJFLQ6qyCBjAnXSmZt.jpg",
+        "name": "Peacock Premium",
+        "id": 387
+    },
+    {
+        "logo_path": "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+        "name": "Amazon Video",
+        "id": 10
+    },
+    {
+        "logo_path": "/xbhHHa1YgtpwhC8lb1NQ3ACVcLd.jpg",
+        "name": "Paramount Plus",
+        "id": 531
+    },
+    {
+        "logo_path": "/z0h7mBHwm5KfMB2MKeoQDD2ngEZ.jpg",
+        "name": "The Roku Channel",
+        "id": 207
+    },
+    {
+        "logo_path": "/6IPjvnYl6WWkIwN158qBFXCr2Ne.jpg",
+        "name": "YouTube Premium",
+        "id": 188
+    },
+    {
+        "logo_path": "/4TJTNWd2TT1kYj6ocUEsQc8WRgr.jpg",
+        "name": "Criterion Channel",
+        "id": 258
     }
 ]
