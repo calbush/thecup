@@ -2,6 +2,15 @@ export default function MovieCard({ movie }) {
     
     const popularServices = ['Netflix', 'Hulu', 'Amazon Prime Video', 'Disney Plus', 'Apple TV Plus', 'Max', 'Peacock', 'Crunchyroll', 'fuboTV', 'Peacock Premium', 'Paramount Plus', 'The Roku Channel', 'YouTube Premium', 'Criterion Channel']
     const popularRentServices = ['Apple TV',  'Amazon Video']
+
+    const checkForPopularServices = (popularServices, movieServices) => {
+        if(!movieServices){
+            return false
+        }
+        return movieServices.filter(service => popularServices.includes(service.provider_name)).length > 0
+    }
+
+
     if (!movie){
         return <div className='movie-card'>Loading...</div>
     }
@@ -11,7 +20,7 @@ export default function MovieCard({ movie }) {
         <div className="movie-card">
             <div className="card-header">
                 <div>{movie[1].title}</div>
-                <div className="card-rating">{movie[1].vote_average}/10</div>
+                <div className="card-rating">{movie[1].vote_average.toString().slice(0,3)}/10</div>
             </div>
             <div className="poster-description-container">
                 <img src={'https://image.tmdb.org/t/p/original/' + movie[1].poster_path} alt='movie poster' height='200' width='150'/>
@@ -23,33 +32,34 @@ export default function MovieCard({ movie }) {
                         {genre.name}
                     </div>
                 ))}</div>
-                <div className="movie-info">{movie[1].release_date}</div>
-                <div className="movie-info">{movie[1].runtime}</div>
+                <div className="movie-info">{movie[1].release_date.slice(0,4)}</div>
+                <div className="movie-info">{movie[1].runtime} minutes</div>
                 
             </div>
             <div className="rent-stream-container">
-                <ul className="streaming-services">
-                    Stream:
-                    {movie[0]?.flatrate &&
-                        movie[0].flatrate.filter(service => popularServices.includes(service.provider_name))
-                        .map(popularService => (
-                                <li key={popularService.logo_path}>
-                                    <img className='streamer-logo' src={'https://image.tmdb.org/t/p/original/' + popularService.logo_path} alt={popularService.provider_name}/>
-                                </li>)
-                        )
-                    }
-                </ul>
-                <ul className="streaming-services">
-                    Rent/Buy:
-                    {movie[0]?.rent &&
-                        movie[0].rent.filter(service => popularRentServices.includes(service.provider_name))
-                        .map(popularRentService =>(
-                            <li key={popularRentService.logo_path}>
-                                <img className='streamer-logo' src={'https://image.tmdb.org/t/p/original/' + popularRentService.logo_path} alt={popularRentService}/>
-                            </li>
-                        ))
-                    }
-                </ul>
+                {checkForPopularServices(popularServices, movie[0]?.flatrate) &&
+                    <ul className="streaming-services">
+                        Stream:
+                            {movie[0].flatrate.filter(service => popularServices.includes(service.provider_name))
+                            .map(popularService => (
+                                    <li key={popularService.logo_path}>
+                                        <img className='streamer-logo' src={'https://image.tmdb.org/t/p/original/' + popularService.logo_path} alt={popularService.provider_name}/>
+                                    </li>)
+                            )}
+                    </ul>
+                }
+                
+                {checkForPopularServices(popularRentServices, movie[0]?.rent) &&
+                    <ul className="streaming-services">
+                        Rent/Buy:
+                            {movie[0].rent.filter(service => popularRentServices.includes(service.provider_name))
+                            .map(popularRentService =>(
+                                <li key={popularRentService.logo_path}>
+                                    <img className='streamer-logo' src={'https://image.tmdb.org/t/p/original/' + popularRentService.logo_path} alt={popularRentService}/>
+                                </li>
+                            ))}
+                    </ul>
+                }
             </div>
         </div>
     )
