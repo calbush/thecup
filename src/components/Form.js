@@ -6,6 +6,7 @@ import { useState } from 'react'
 import React from 'react'
 import ProviderCheckboxes from './ProviderCheckboxes'
 import { isEqual } from 'lodash'
+import '../styles/form.css'
 
 export const Form = ({handleClick}) => {
 
@@ -18,25 +19,25 @@ export const Form = ({handleClick}) => {
     const [queryParameters, setQueryParameters] = useState({})
 
     const [genreCheckboxes, setGenreCheckboxes] = useState({
-        '28': false,
-        '12': false,
-        '16': false,
-        '35': false,
-        '80': false,
-        '99': false,
-        '18': false,
-        '10751': false,
-        '14': false,
-        '36': false,
-        '27': false,
-        '10402': false,
-        '9648': false,
-        '10749': false,
-        '878': false,
-        '10770': false,
-        '53': false,
-        '10752': false,
-        '37': false,
+        '28': true,
+        '12': true,
+        '16': true,
+        '35': true,
+        '80': true,
+        '99': true,
+        '18': true,
+        '10751': true,
+        '14': true,
+        '36': true,
+        '27': true,
+        '10402': true,
+        '9648': true,
+        '10749': true,
+        '878': true,
+        '10770': true,
+        '53': true,
+        '10752': true,
+        '37': true,
     })
 
     const [providerCheckboxes, setProviderCheckboxes] = useState({
@@ -49,12 +50,31 @@ export const Form = ({handleClick}) => {
         '1899': false,
         '386': false,
         '283': false,
+        '257': false,
+        '387': false,
+        '10': false,
+        '531': false,
+        '207': false,
+        '188': false,
+        '258': false,
     })
 
     const [rating, setRating] = useState('Any')
     const [popularity, setPopularity] = useState('Any')
 
     const [activeTab, setActiveTab] = useState('genres')
+
+    const checkboxToggle = (stateObj, setter) => {
+        const toggled = {}
+        for (const property in stateObj){
+            if (stateObj[property]){
+                toggled[property] = false
+            } else {
+                toggled[property]= true
+            }
+        }
+        setter(toggled)
+    }
 
     const options = {
         method: 'GET',
@@ -84,7 +104,7 @@ export const Form = ({handleClick}) => {
         } else {
           //Get 10 random pages in the range of total_pages (TMDB doesn't allow us to retrieve > page 500)
           while(randomlyFetchedPages.size < 10){
-            const randomNum = Math.floor(Math.random() * Math.min(totalPages, 499))
+            const randomNum = Math.floor(Math.random() * Math.min(totalPages, 499) + 1)
             randomlyFetchedPages.add(randomNum)
           }
           randomlyFetchedPages.forEach((pageNumber) => {
@@ -98,10 +118,6 @@ export const Form = ({handleClick}) => {
         return new Promise((resolve,reject) => {
             if (!isEqual(oldParams, newParams)){
             setQueryParameters(JSON.parse(JSON.stringify(newParams)))
-            console.log('genre IDs: ', genreIds)
-            console.log('rating min: ', ratingMin)
-            console.log('popularity min: ', popularityMin)
-            console.log('popularity max: ',popularityMax)
             const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&watch_region=US&sort_by=popularity.desc&with_genres=${genreIds.join('|')}&with_watch_providers=${providerIds.join('|')}&vote_count.gte=${popularityMin}&vote_count.lte=${popularityMax}&vote_average.gte=${ratingMin}&vote_average.lte=${ratingMax}`
                 fetch(url, options)
                     .then(res => res.json())
@@ -167,6 +183,7 @@ export const Form = ({handleClick}) => {
             setRatingMax(4.99)
         }
     }
+    
 
     const handlePopularityChange = (event) => {
         const { value } = event.target
@@ -191,26 +208,28 @@ export const Form = ({handleClick}) => {
 
     return (
         <div className='form'>
-            <div>
-                <div id='Tabs'>
-                    <div onClick={handleTabChange} id='genres'>Genres</div>
-                    <div onClick={handleTabChange} id='providers'>Streaming Services</div>
-                    <div onClick={handleTabChange} id='rating-popularity'>Rating/Popularity</div>
+            <div className='form-card'>
+                <div className='tabs-header'>
+                    <div onClick={handleTabChange} id='genres' className='tab'>Genres</div>
+                    <div onClick={handleTabChange} id='providers' className='tab'>Streaming Services</div>
+                    <div onClick={handleTabChange} id='rating-popularity' className='tab'>Rating/Popularity</div>
                 </div>
-            {activeTab === 'genres' &&
-                <GenreCheckboxes genres={genres} handleChange={handleGenreChange} genreCheckboxes={genreCheckboxes}/>
-            }
-            {activeTab === 'providers' &&
-                <ProviderCheckboxes providers={providers} handleChange={handleProviderChange} providerCheckboxes={providerCheckboxes}/>
-            }
-            {activeTab === 'rating-popularity' &&
-            <div>
-                <Rating handleChange={handleRatingChange} rating={rating}/>
-                <Popularity handleChange={handlePopularityChange} popularity={popularity}/>
+                <div className='tabs-body'>
+                                {activeTab === 'genres' &&
+                    <GenreCheckboxes genres={genres} handleChange={handleGenreChange} genreCheckboxes={genreCheckboxes} checkboxToggle={() => checkboxToggle(genreCheckboxes, setGenreCheckboxes)}/>
+                                }
+                                {activeTab === 'providers' &&
+                    <ProviderCheckboxes providers={providers} handleChange={handleProviderChange} providerCheckboxes={providerCheckboxes} checkboxToggle={() => checkboxToggle(providerCheckboxes, setProviderCheckboxes)}/>
+                                }
+                                {activeTab === 'rating-popularity' &&
+                                <div>
+                    <Rating handleChange={handleRatingChange} rating={rating}/>
+                    <Popularity handleChange={handlePopularityChange} popularity={popularity}/>
+                                </div>
+                                }
+                </div>
             </div>
-            }
-            </div>
-            <button onClick={() => {handleClick(compareParamsHelper, queryParameters, {genreIds, providerIds, popularityMin, popularityMax, ratingMin, ratingMax})}}>Search</button>
+            <button className='form-button' onClick={() => {handleClick(compareParamsHelper, queryParameters, {genreIds, providerIds, popularityMin, popularityMax, ratingMin, ratingMax})}}>Search</button>
         </div>
     )
 }
