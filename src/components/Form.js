@@ -1,4 +1,4 @@
-import { genres, providers } from '../assets'
+import { genres, providers } from '../assets/assets.js'
 import GenreCheckboxes from './GenreCheckboxes'
 import Popularity from './Popularity'
 import Rating from './Rating'
@@ -64,16 +64,20 @@ export const Form = ({handleClick}) => {
 
     const [activeTab, setActiveTab] = useState('genres')
 
-    const checkboxToggle = (stateObj, setter) => {
+    const toggleAll = (checkboxState, setter) => {
         const toggled = {}
-        for (const property in stateObj){
-            if (stateObj[property]){
-                toggled[property] = false
-            } else {
-                toggled[property]= true
-            }
-        }
+        for (const property in checkboxState){
+            toggled[property] = true
         setter(toggled)
+        }
+    }
+
+    const untoggleAll = (checkboxState, setter) => {
+        const untoggled = {}
+        for (const property in checkboxState) {
+            untoggled[property] = false
+        }
+        setter(untoggled)
     }
 
     const options = {
@@ -216,10 +220,10 @@ export const Form = ({handleClick}) => {
                 </div>
                 <div className='tabs-body'>
                                 {activeTab === 'genres' &&
-                    <GenreCheckboxes genres={genres} handleChange={handleGenreChange} genreCheckboxes={genreCheckboxes} checkboxToggle={() => checkboxToggle(genreCheckboxes, setGenreCheckboxes)}/>
+                    <GenreCheckboxes genres={genres} handleChange={handleGenreChange} genreCheckboxes={genreCheckboxes} toggleAll={() => toggleAll(genreCheckboxes, setGenreCheckboxes)} untoggleAll={() => untoggleAll(genreCheckboxes, setGenreCheckboxes)}/>
                                 }
                                 {activeTab === 'providers' &&
-                    <ProviderCheckboxes providers={providers} handleChange={handleProviderChange} providerCheckboxes={providerCheckboxes} checkboxToggle={() => checkboxToggle(providerCheckboxes, setProviderCheckboxes)}/>
+                    <ProviderCheckboxes providers={providers} handleChange={handleProviderChange} providerCheckboxes={providerCheckboxes} toggleAll={() => toggleAll(providerCheckboxes, setProviderCheckboxes)} untoggleAll={() => untoggleAll(providerCheckboxes, setProviderCheckboxes)}/>
                                 }
                                 {activeTab === 'rating-popularity' &&
                                 <div>
