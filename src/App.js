@@ -3,6 +3,8 @@ import { Form } from "./components/Form";
 import MovieCard from "./components/MovieCard";
 import { useState, useRef } from "react";
 import { movieRandomizer } from "./utils/movieRandomizer";
+import Header from "./components/Header.js"
+import Footer from "./components/Footer";
 
 function App() {
   const retrievedMovieIds = useRef([])
@@ -57,8 +59,10 @@ function App() {
     
   return (
     <div className="app">
+      <Header/>
       <Form handleClick={handleClick}/>
       <MovieCard movie={currentMovie}/>
+      <Footer/>
     </div>
   );
 
