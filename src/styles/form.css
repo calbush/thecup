@@ -1,0 +1,297 @@
+@font-face {
+    font-family: 'Oswald';
+    src: url('../assets/fonts/static/Oswald-Light.ttf');
+}
+*{
+    box-sizing: border-box;
+}
+
+/* * {
+    outline-style: dotted;
+    outline-color: orange;
+} */
+
+/* html{
+    height: 120vh;
+}
+
+body {
+    height: 100%;
+}
+
+#root {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+} */
+
+.app {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    font-family: 'Oswald';
+    background-color: steelblue;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    grid-column-start: span 3;
+}
+
+.header-logo {
+    display: flex;
+}
+
+.header-logo > h1 {
+    align-self: center;
+}
+
+.main-logo {
+    height: auto;
+    width: 50px;
+}
+
+.form {
+    grid-column-start: 2;
+    display: grid;
+    grid-template-rows: 8fr 1fr;
+    gap: 40px;
+    width: max(500px, 40%);
+    justify-self: center;
+}
+
+.movie-card {
+    background-color: lightblue;
+    padding: 6px;
+    grid-column-start: 2;
+    justify-self: center;
+    width: max(500px, 40%);
+    border: 2px solid black;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px black;
+}
+
+.form-card {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    border: 1px solid black;
+    border-bottom: 0px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px black;
+}
+
+.tabs-header {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid black;
+}
+
+.tab {
+    padding: 8px;
+}
+
+.tabs-body{
+    background-color: lightblue;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 0px 8px 8px;
+}
+
+.genre-tab-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.genre-checkboxes-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+.checkbox-with-label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.services {
+    display: flex;
+}
+
+.streamer-logo {
+    height: 50px;
+    width: 50px;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+
+.provider-tab-container {
+}
+
+.provider-checkboxes-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.provider-selection {
+    display: flex;
+    flex-direction: column;
+}
+
+.provider-image {
+    height: 50px;
+    width: 50px;
+}
+
+.movie-card-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.poster-description-container {
+    display: flex;
+}
+
+.movie-card-top-panel {
+    display: flex;
+}
+
+.movie-card-top-panel > img {
+    height: 200px;
+    width: 150px;
+    align-self: center;
+    border: 1px solid black;
+}
+
+.movie-card-top-and-middle  {
+    border-bottom: 1px solid black;
+    padding: 6px;
+}
+.movie-card-middle-panel {
+    display: flex;
+    justify-content: space-between;
+}
+
+.movie-card-bottom-panel {
+    padding: 6px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.title-rating-description {
+    padding: 6px;
+}
+
+.title-rating {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px;
+    border-style: solid;
+    border-color: black;
+}
+
+.movie-card-rating {
+    display: flex;
+    align-items: flex-end;
+}
+
+.movie-title {
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.movie-description {
+    padding: 6px;
+}
+
+.movie-panel-right {
+    display: flex;
+    gap: 3px;
+    align-items: flex-end;
+}
+
+.movie-info {
+    padding-top: 3px;
+}
+
+.streaming-services {
+    display: flex;
+}
+
+.movie-subscription-services, .movie-rental-services {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.movie-card-bottom-panel > div > ul {
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-self: stretch;
+    grid-column-start: span 3;
+}
+/* --------------------CSS Reset----------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
