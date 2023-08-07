@@ -12,9 +12,13 @@ export default function MovieCard({ movie }) {
     }
 
 
-    if (!movie){
-        return <div className='movie-card'>Loading...</div>
+   if (movie[0]?.status === 'failure'){
+        return <div className="movie-card">Whoops! We can't find any movies matching those parameters.</div>
     }
+    else if(movie[0] === undefined){
+        return <div></div>
+    }
+    console.log(movie)
     return (
         
 

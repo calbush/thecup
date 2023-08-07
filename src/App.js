@@ -48,11 +48,13 @@ function App() {
       } catch (err) {
         console.error(err);
       }
-    } else {
+    } else if(retrievedMovieIds.current.length > 0){
       const randomIndex = movieRandomizer(retrievedMovieIds.current);
       const movieInfo = await getMovieInfo(retrievedMovieIds.current[randomIndex])
       retrievedMovieIds.current.splice(randomIndex, 1);
       setCurrentMovie(movieInfo);
+    } else {
+      setCurrentMovie([{'status': 'failure'}])
     }
   };
   
