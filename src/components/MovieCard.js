@@ -11,17 +11,27 @@ export default function MovieCard({ movie }) {
         return movieServices.filter(service => popularServices.includes(service.provider_name)).length > 0
     }
 
+    const combinedServiceChecker = () => {
+        if(movie[0]?.flatrate && movie[0]?.ads){
+            return movie[0].flatrate.concat(movie[0].ads)
+        } else if(movie[0].flatrate){
+            return movie[0].flatrate
+        } else if(movie[0].ads){
+            return movie[0].ads
+        }
+    }
+
 
    if (movie[0]?.status === 'failure'){
         return <div className="movie-card">Whoops! We can't find any movies matching those parameters.</div>
     }
-    else if(movie[0] === undefined){
-        return <div></div>
+    else if(movie[0] === undefined && movie[1] === undefined){
+        return <div className='placeholder'></div>
     }
     console.log(movie)
-    return (
-        
+    const combinedServices = combinedServiceChecker()
 
+    return (
         <div className="movie-card">
             <div className="movie-card-top-and-middle">
                 <div className="movie-card-top-panel">
@@ -56,11 +66,11 @@ export default function MovieCard({ movie }) {
                 </div>
             </div>
                 <div className="movie-card-bottom-panel">
-                    {checkForPopularServices(popularServices, movie[0]?.flatrate) &&
+                    {checkForPopularServices(popularServices, combinedServices) &&
                         <div className="movie-subscription-services">
                             <div>Stream:</div>
                             <ul className="streaming-services">
-                                    {movie[0].flatrate.filter(service => popularServices.includes(service.provider_name))
+                                    {combinedServices.filter(service => popularServices.includes(service.provider_name))
                                     .map(popularService => (
                                             <li key={popularService.logo_path}>
                                                 <img className='streamer-logo' src={'https://image.tmdb.org/t/p/original/' + popularService.logo_path} alt={popularService.provider_name}/>
