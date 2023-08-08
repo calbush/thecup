@@ -129,9 +129,9 @@ body {
 }
 
 .streamer-logo {
-    height: 50px;
-    width: 50px;
-    border-radius: 15px;
+    height: 30px;
+    width: 30px;
+    border-radius: 10px;
     border: 1px solid black;
 }
 
