@@ -140,6 +140,10 @@ export const Form = ({handleClick}) => {
 
 
     const handleTabChange = (tabNumber) => {
+        const currentlyActive = document.querySelector('.active-tab')
+        currentlyActive.classList.remove('active-tab')
+        const newlyActiveTab = tabNumber.target
+        newlyActiveTab.classList.add('active-tab')
         setActiveTab(tabNumber.target.id)
     }
 
@@ -193,15 +197,12 @@ export const Form = ({handleClick}) => {
         const { value } = event.target
         setPopularity(value)
         if (value === 'popular'){
-            console.log('popular!')
             setPopularityMin(1000)
             setPopularityMax(100000)
         } else if (value === 'less-popular'){
-            console.log('less')
             setPopularityMin(51)
             setPopularityMax(999)
         } else if (value === 'obscure'){
-            console.log('obscure')
             setPopularityMin(0)
             setPopularityMax(50)
         } else {
@@ -214,7 +215,7 @@ export const Form = ({handleClick}) => {
         <div className='form'>
             <div className='form-card'>
                 <div className='tabs-header'>
-                    <div onClick={handleTabChange} id='genres' className='tab'>Genres</div>
+                    <div onClick={handleTabChange} id='genres' className='tab active-tab'>Genres</div>
                     <div onClick={handleTabChange} id='providers' className='tab'>Streaming Services</div>
                     <div onClick={handleTabChange} id='rating-popularity' className='tab'>Rating/Popularity</div>
                 </div>
