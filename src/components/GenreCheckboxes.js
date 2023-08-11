@@ -2,16 +2,18 @@ export default function GenreCheckboxes({genres, handleChange, genreCheckboxes, 
 
     return (
         <div className='genre-tab-container'>
-            <div className='tab-title'> Select your genre(s)</div>
-            <button className='toggle-btn' onClick={toggleAll}>Check All</button>
-            <button className='toggle-btn' onClick={untoggleAll}>Uncheck All</button>
+            <div className='tab-title'> Select your genre(s):</div>
             <div className='genre-checkboxes-container'>
                 {genres.map((genre) => (
-                        <div className='checkbox-with-label' key={genre.id}>
+                        <label className='checkbox-with-label' htmlFor={genre.id}key={genre.id}>
                             <input className='' type='checkbox' id={genre.id} name={genre.name} onChange={handleChange} checked={genreCheckboxes[genre.id]}/>
-                            <label className='' htmlFor={genre.id}>{genre.name}</label>
-                        </div>
+                             {genre.name}
+                        </label>
                 ))}
+            </div>
+            <div class="toggle-btns">
+                <button className='toggle-btn' onClick={toggleAll}>Check All</button>
+                <button className='toggle-btn' onClick={untoggleAll}>Uncheck All</button>
             </div>
         </div>
     )
