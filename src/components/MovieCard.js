@@ -14,9 +14,9 @@ export default function MovieCard({ movie }) {
     const combinedServiceChecker = () => {
         if(movie[0]?.flatrate && movie[0]?.ads){
             return movie[0].flatrate.concat(movie[0].ads)
-        } else if(movie[0].flatrate){
+        } else if(movie[0]?.flatrate){
             return movie[0].flatrate
-        } else if(movie[0].ads){
+        } else if(movie[0]?.ads){
             return movie[0].ads
         }
     }
