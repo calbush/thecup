@@ -19,25 +19,25 @@ export const Form = ({handleClick}) => {
     const [queryParameters, setQueryParameters] = useState({})
 
     const [genreCheckboxes, setGenreCheckboxes] = useState({
-        '28': true,
-        '12': true,
-        '16': true,
-        '35': true,
-        '80': true,
-        '99': true,
-        '18': true,
-        '10751': true,
-        '14': true,
-        '36': true,
-        '27': true,
-        '10402': true,
-        '9648': true,
-        '10749': true,
-        '878': true,
-        '10770': true,
-        '53': true,
-        '10752': true,
-        '37': true,
+        '28': 'unchecked',
+        '12': 'unchecked',
+        '16': 'unchecked',
+        '35': 'unchecked',
+        '80': 'unchecked',
+        '99': 'unchecked',
+        '18': 'unchecked',
+        '10751': 'unchecked',
+        '14': 'unchecked',
+        '36': 'unchecked',
+        '27': 'unchecked',
+        '10402': 'unchecked',
+        '9648': 'unchecked',
+        '10749': 'unchecked',
+        '878': 'unchecked',
+        '10770': 'unchecked',
+        '53': 'unchecked',
+        '10752': 'unchecked',
+        '37': 'unchecked',
     })
 
     const [providerCheckboxes, setProviderCheckboxes] = useState({
@@ -67,7 +67,7 @@ export const Form = ({handleClick}) => {
     const toggleAll = (checkboxState, setter) => {
         const toggled = {}
         for (const property in checkboxState){
-            toggled[property] = true
+            toggled[property] = 'checked'
         setter(toggled)
         }
     }
@@ -75,7 +75,7 @@ export const Form = ({handleClick}) => {
     const untoggleAll = (checkboxState, setter) => {
         const untoggled = {}
         for (const property in checkboxState) {
-            untoggled[property] = false
+            untoggled[property] = 'unchecked'
         }
         setter(untoggled)
     }
@@ -148,12 +148,21 @@ export const Form = ({handleClick}) => {
     }
 
     const handleGenreChange = (event) => {
-        const { id , checked } = event.target
-        setGenreCheckboxes((prevGenres) => ({
-            ...prevGenres,
-            [id]: checked,
-        }))
-        if(checked){
+        const { id , classList } = event.target
+        console.log('id: ', id)
+        console.log('classlist: ', classList[0])
+            if(classList[0] === 'checked'){
+                setGenreCheckboxes((prevGenres) => ({
+                ...prevGenres,
+                [id]: 'unchecked',
+            }))}
+            else {
+                setGenreCheckboxes((prevGenres) => ({
+                    ...prevGenres,
+                    [id]: 'checked',
+                }))
+            }
+        if(classList[0]){
             setGenreIds((previousIds => [...previousIds, id]))
         } else {
             setGenreIds(previousIds => {
