@@ -30,7 +30,7 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     font-family: 'Oswald';
-    background-color: steelblue;
+    background-color: #445E93;
 }
 
 .header {
@@ -63,7 +63,7 @@ body {
 }
 
 .movie-card {
-    background-color: lightblue;
+    background-color: #7EB2DD;
     padding: 6px;
     grid-column-start: 2;
     justify-self: center;
@@ -78,23 +78,49 @@ body {
     flex-direction: column;
     height: 300px;
     border: 1px solid black;
-    border-bottom: 0px;
+    border-top: none;
     border-radius: 8px;
-    box-shadow: 2px 2px 8px black;
+    box-shadow: 2px 10px 15px black;
 }
 
 .tabs-header {
-    display: flex;
-    justify-content: space-around;
-    border-bottom: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-radius: 8px;
+    border-top: 1px solid black;
 }
 
 .tab {
+    display: flex;
+    justify-content: center;
     padding: 8px;
+    border-bottom: 1px solid black;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.tab:hover:not(.active-tab) {
+    color: #cc3f0c;
+}
+
+.genres-tab {
+    border-right: 1px solid black;
+    border-radius: 8px 0px 0px 0px;
+}
+
+.rating-popularity-tab{
+    border-left: 1px solid black;
+    border-radius: 0px 8px 0px 0px;
+}
+
+.active-tab {
+    background-color: #7EB2DD;
+    border-bottom: none;
+    color: #cc3f0c;
 }
 
 .tabs-body{
-    background-color: lightblue;
+    background-color: #7EB2DD;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -102,26 +128,45 @@ body {
     border-radius: 0px 0px 8px 8px;
 }
 
+.tab-title{
+    align-self: center;
+    font-size: 20px;
+}
+
 .genre-tab-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     height: 100%;
     width: 100%;
-    align-items: center;
-    justify-content: center;
+    padding: 10px 20px 10px 20px;
+    gap: 10px;
 }
 
 .genre-checkboxes-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
+    min-height: 175px;
+    border: 2px solid black;
+    padding: 8px 2px 8px 2px;
+    border-radius: 8px;
+    background-color: #445E93;
 }
 
-.checkbox-with-label {
+.toggle-btns {
+    align-self: flex-end;
+}
+
+.genre-checkboxes-container > div {
     display: flex;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+    align-self: center;
+    user-select: none;
+    padding: 6px;
+}
+
+.unchecked:hover {
+    color: #cc3f0c;
 }
 
 .services {
@@ -257,6 +302,14 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+
+.checked {
+    background-color: #cc3f0c;
+    outline: 1px solid black;
+    border-radius: 8px;
+}
+
 /* --------------------CSS Reset----------------------- */
 
 html, body, div, span, applet, object, iframe,
