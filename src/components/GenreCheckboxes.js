@@ -5,7 +5,9 @@ export default function GenreCheckboxes({genres, handleChange, genreCheckboxes, 
             <div className='tab-title'> Select your genre(s):</div>
             <div className='genre-checkboxes-container'>
                 {genres.map((genre) => (
-                    <div className={genreCheckboxes[genre.id]} key={genre.id} onClick={handleChange} id={genre.id}>{genre.name}</div>
+                    <div className="genre" key={genre.id}>
+                        <div className={genreCheckboxes[genre.id]} onClick={handleChange} id={genre.id}>{genre.name}</div>
+                    </div>
                 ))}
             </div>
             <div className="toggle-btns">
