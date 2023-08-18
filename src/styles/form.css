@@ -159,10 +159,7 @@ body {
 }
 
 .genre-checkboxes-container > div {
-    display: flex;
-    align-self: center;
-    user-select: none;
-    padding: 6px;
+
 }
 
 .unchecked:hover {
@@ -180,8 +177,6 @@ body {
     border: 1px solid black;
 }
 
-.provider-tab-container {
-}
 
 .provider-checkboxes-container {
     display: grid;
@@ -197,9 +192,17 @@ body {
     flex-direction: column;
 }
 
-.provider-image {
+
+.provider > img {
     height: 50px;
     width: 50px;
+    border-radius: 8px;
+    opacity: 0.3;
+}
+
+img.checked {
+    outline: 3px solid #cc3f0c;
+    opacity: 1;
 }
 
 .movie-card-header {
@@ -304,10 +307,24 @@ body {
 }
 
 
-.checked {
+div.checked {
     background-color: #cc3f0c;
     outline: 1px solid black;
     border-radius: 8px;
+}
+
+.genre {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.genre > div {
+    display: flex;
+    user-select: none;
+    padding: 6px;
+    width: 100%;
+    justify-content: center;
 }
 
 /* --------------------CSS Reset----------------------- */

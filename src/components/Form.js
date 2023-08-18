@@ -41,22 +41,22 @@ export const Form = ({handleClick}) => {
     })
 
     const [providerCheckboxes, setProviderCheckboxes] = useState({
-        '8': false,
-        '9': false,
-        '337': false,
-        '350': false,
-        '2': false,
-        '15': false,
-        '1899': false,
-        '386': false,
-        '283': false,
-        '257': false,
-        '387': false,
-        '10': false,
-        '531': false,
-        '207': false,
-        '188': false,
-        '258': false,
+        '8': 'unchecked',
+        '9': 'unchecked',
+        '337': 'unchecked',
+        '350': 'unchecked',
+        '2': 'unchecked',
+        '15': 'unchecked',
+        '1899': 'unchecked',
+        '386': 'unchecked',
+        '283': 'unchecked',
+        '257': 'unchecked',
+        '387': 'unchecked',
+        '10': 'unchecked',
+        '531': 'unchecked',
+        '207': 'unchecked',
+        '188': 'unchecked',
+        '258': 'unchecked',
     })
 
     const [rating, setRating] = useState('Any')
@@ -147,42 +147,39 @@ export const Form = ({handleClick}) => {
         setActiveTab(tabNumber.target.id)
     }
 
-    const handleGenreChange = (event) => {
-        const { id , classList } = event.target
-        console.log('id: ', id)
-        console.log('classlist: ', classList[0])
-            if(classList[0] === 'checked'){
-                setGenreCheckboxes((prevGenres) => ({
+    const handleGenreSelection = (event) => {
+        const { id } = event.target
+        if (genreCheckboxes[id] === 'unchecked'){
+            setGenreCheckboxes((prevGenres) => ({
                 ...prevGenres,
-                [id]: 'unchecked',
-            }))}
-            else {
-                setGenreCheckboxes((prevGenres) => ({
-                    ...prevGenres,
-                    [id]: 'checked',
-                }))
-            }
-        if(classList[0]){
-            setGenreIds((previousIds => [...previousIds, id]))
+                [id]: 'checked'
+            }))
+        setGenreIds((prevIds) => ([...prevIds, id]))
         } else {
-            setGenreIds(previousIds => {
-                return previousIds.toSpliced(previousIds.findIndex(element => element === id),1)
-            })
+            setGenreCheckboxes((prevGenres) => ({
+                ...prevGenres,
+                [id]: 'unchecked'
+            }))
+            const indexToRemove = genreIds.findIndex((element) => element === id)
+            setGenreIds((prevIds) => (prevIds.toSpliced(indexToRemove, 1)))
         }
     }
 
-    const handleProviderChange = (event) => {
-        const { id , checked } = event.target
-        setProviderCheckboxes((prevProviders) => ({
-            ...prevProviders,
-            [id]: checked,
-        }))
-        if(checked){
-            setProviderIds((previousIds => [...previousIds, id]))
+    const handleProviderSelection = (event) => {
+        const { id } = event.target
+        if (providerCheckboxes[id] === 'unchecked'){
+            setProviderCheckboxes((prevProviders) => ({
+                ...prevProviders,
+                [id]: 'checked'
+            }))
+        setProviderIds((prevIds) => ([...prevIds, id]))
         } else {
-            setProviderIds(previousIds => {
-                return previousIds.toSpliced(previousIds.findIndex(element => element === id),1)
-            })
+            setProviderCheckboxes((prevProviders) => ({
+                ...prevProviders,
+                [id]: 'unchecked'
+            }))
+            const indexToRemove = providerIds.findIndex((element) => element === id)
+            setProviderIds((prevIds) => (prevIds.toSpliced(indexToRemove, 1)))
         }
     }
 
@@ -230,10 +227,10 @@ export const Form = ({handleClick}) => {
                 </div>
                 <div className='tabs-body'>
                                 {activeTab === 'genres' &&
-                    <GenreCheckboxes genres={genres} handleChange={handleGenreChange} genreCheckboxes={genreCheckboxes} toggleAll={() => toggleAll(genreCheckboxes, setGenreCheckboxes)} untoggleAll={() => untoggleAll(genreCheckboxes, setGenreCheckboxes)}/>
+                    <GenreCheckboxes genres={genres} handleChange={handleGenreSelection} genreCheckboxes={genreCheckboxes} toggleAll={() => toggleAll(genreCheckboxes, setGenreCheckboxes)} untoggleAll={() => untoggleAll(genreCheckboxes, setGenreCheckboxes)}/>
                                 }
                                 {activeTab === 'providers' &&
-                    <ProviderCheckboxes providers={providers} handleChange={handleProviderChange} providerCheckboxes={providerCheckboxes} toggleAll={() => toggleAll(providerCheckboxes, setProviderCheckboxes)} untoggleAll={() => untoggleAll(providerCheckboxes, setProviderCheckboxes)}/>
+                    <ProviderCheckboxes providers={providers} handleChange={handleProviderSelection} providerCheckboxes={providerCheckboxes} toggleAll={() => toggleAll(providerCheckboxes, setProviderCheckboxes)} untoggleAll={() => untoggleAll(providerCheckboxes, setProviderCheckboxes)}/>
                                 }
                                 {activeTab === 'rating-popularity' &&
                                 <div>
