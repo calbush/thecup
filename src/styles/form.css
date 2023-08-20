@@ -133,7 +133,7 @@ body {
     font-size: 20px;
 }
 
-.genre-tab-container {
+.genre-tab-container, .provider-tab-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -156,10 +156,6 @@ body {
 
 .toggle-btns {
     align-self: flex-end;
-}
-
-.genre-checkboxes-container > div {
-
 }
 
 .unchecked:hover {
@@ -192,6 +188,9 @@ body {
     flex-direction: column;
 }
 
+.provider-tab-container {
+
+}
 
 .provider > img {
     height: 50px;
@@ -237,7 +236,13 @@ img.checked {
 .movie-card-bottom-panel {
     padding: 6px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    gap: 6px;
+}
+
+.movie-subscription-services > div {
+
 }
 
 .title-rating-description {
@@ -280,10 +285,11 @@ img.checked {
     display: flex;
 }
 
-.movie-subscription-services, .movie-rental-services {
+.movie-subscription-services {
     display: flex;
     align-items: center;
     gap: 6px;
+    border-bottom: 1px solid black;
 }
 
 .movie-card-bottom-panel > div > ul {
