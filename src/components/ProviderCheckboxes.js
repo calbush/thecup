@@ -2,14 +2,16 @@ export default function ProviderCheckboxes({providers, handleChange, providerChe
     return (
     <div className="provider-tab-container">
         <div className="tab-title">Select your service(s)</div>
-        <button className='toggle-btn' onClick={toggleAll}>Check All</button>
-        <button className='toggle-btn' onClick={untoggleAll}>Uncheck All</button>
         <div className='provider-checkboxes-container'>
             {providers.map((provider) => (
                 <div className='provider' key={provider.id}>
                     <img src={'https://image.tmdb.org/t/p/original/' + provider.logo_path} onClick={handleChange} alt={provider.name}  id={provider.id} className={providerCheckboxes[provider.id]}/>
                 </div>
             ))}
+        </div>
+        <div className="toggle-btns">
+            <button className='toggle-btn' onClick={toggleAll}>Check All</button>
+            <button className='toggle-btn' onClick={untoggleAll}>Uncheck All</button>
         </div>
     </div>
     )
