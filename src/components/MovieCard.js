@@ -2,25 +2,19 @@
 export default function MovieCard({ movie }) {
     
     const popularServices = ['Netflix', 'Hulu', 'Amazon Prime Video', 'Disney Plus', 'Apple TV Plus', 'Max', 'Peacock', 'Crunchyroll', 'fuboTV', 'Peacock Premium', 'Paramount Plus', 'The Roku Channel', 'YouTube Premium', 'Criterion Channel']
-    const popularRentServices = ['Apple TV',  'Amazon Video']
+    const popularRentBuyServices = ['Apple TV',  'Amazon Video']
 
     const checkForPopularServices = (popularServices, movieServices) => {
         if(!movieServices){
             return false
         }
-        return movieServices.filter(service => popularServices.includes(service.provider_name)).length > 0
+        const matchingServices = movieServices.filter(service => popularServices.includes(service.provider_name))
+        if (matchingServices.length <= 0){
+            return false
+        } else return matchingServices
+        
+        
     }
-
-    const combinedServiceChecker = () => {
-        if(movie[0]?.flatrate && movie[0]?.ads){
-            return movie[0].flatrate.concat(movie[0].ads)
-        } else if(movie[0]?.flatrate){
-            return movie[0].flatrate
-        } else if(movie[0]?.ads){
-            return movie[0].ads
-        }
-    }
-
 
    if (movie[0]?.status === 'failure'){
         return <div className="movie-card">Whoops! We can't find any movies matching those parameters.</div>
@@ -28,8 +22,11 @@ export default function MovieCard({ movie }) {
     else if(movie[0] === undefined && movie[1] === undefined){
         return <div className='placeholder'></div>
     }
-    console.log(movie)
-    const combinedServices = combinedServiceChecker()
+   
+    const flatrateServices = checkForPopularServices(popularServices, movie[0]?.flatrate)
+    const withAdsServices = checkForPopularServices(popularServices, movie[0]?.ads)
+    const rentServices = checkForPopularServices(popularRentBuyServices, movie[0]?.rent)
+    const buyServices = checkForPopularServices(popularRentBuyServices, movie[0]?.buy)
 
     return (
         <div className="movie-card">
@@ -39,7 +36,7 @@ export default function MovieCard({ movie }) {
                     <div className="title-rating-description">
                         <div className="title-rating">
                             <div className="movie-title">{movie[1].title}</div>
-                            <div className="movie-card-rating">{movie[1].vote_average.toString().slice(0,3)}/10</div>
+                            <div className="movie-card-rating">{movie[1].vote_average?.toString().slice(0,3)}/10</div>
                         </div>
                         <div className="movie-description">{movie[1].overview}</div>
                     </div>
@@ -66,30 +63,54 @@ export default function MovieCard({ movie }) {
                 </div>
             </div>
                 <div className="movie-card-bottom-panel">
-                    {checkForPopularServices(popularServices, combinedServices) &&
+                    {flatrateServices &&
                         <div className="movie-subscription-services">
                             <div>Stream:</div>
                             <ul className="streaming-services">
-                                    {combinedServices.filter(service => popularServices.includes(service.provider_name))
-                                    .map(popularService => (
-                                            <li key={popularService.logo_path}>
-                                                <img className='streamer-logo' src={'https://image.tmdb.org/t/p/original/' + popularService.logo_path} alt={popularService.provider_name}/>
-                                            </li>)
+                                    {flatrateServices.map(service => (
+                                        <li key={service.logo_path}>
+                                            <img className='streamer-logo' src={'https://image.tmdb.org/t/p/original/' + service.logo_path} alt={service.provider_name}/>
+                                        </li>)
                                     )}
                             </ul>
                         </div>
                     }
-                
-                    {checkForPopularServices(popularRentServices, movie[0]?.rent) &&
-                        <div className="movie-rental-services">
-                            <div>Rent/Buy:</div>
+
+                    {withAdsServices &&
+                        <div className="movie-subscription-services">
+                            <div>With ads:</div>
                             <ul className="streaming-services">
-                                    {movie[0].rent.filter(service => popularRentServices.includes(service.provider_name))
-                                    .map(popularRentService =>(
-                                        <li key={popularRentService.logo_path}>
-                                            <img className='streamer-logo' src={'https://image.tmdb.org/t/p/original/' + popularRentService.logo_path} alt={popularRentService}/>
-                                        </li>
-                                    ))}
+                                    {withAdsServices.map(service => (
+                                        <li key={service.logo_path}>
+                                            <img className='streamer-logo' src={'https://image.tmdb.org/t/p/original/' + service.logo_path} alt={service.provider_name}/>
+                                        </li>)
+                                    )}
+                            </ul>
+                        </div>
+                    }   
+
+                    {rentServices &&
+                        <div className="movie-subscription-services">
+                            <div>Rent:</div>
+                            <ul className="streaming-services">
+                                    {rentServices.map(service => (
+                                        <li key={service.logo_path}>
+                                            <img className='streamer-logo' src={'https://image.tmdb.org/t/p/original/' + service.logo_path} alt={service.provider_name}/>
+                                        </li>)
+                                    )}
+                            </ul>
+                        </div>
+                    }
+
+                    {buyServices &&
+                        <div className="movie-subscription-services">
+                            <div>Buy:</div>
+                            <ul className="streaming-services">
+                                    {buyServices.map(service => (
+                                        <li key={service.logo_path}>
+                                            <img className='streamer-logo' src={'https://image.tmdb.org/t/p/original/' + service.logo_path} alt={service.provider_name}/>
+                                        </li>)
+                                    )}
                             </ul>
                         </div>
                     }
