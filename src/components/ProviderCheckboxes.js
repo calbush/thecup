@@ -1,7 +1,7 @@
 export default function ProviderCheckboxes({providers, handleChange, providerCheckboxes, toggleAll, untoggleAll}){
     return (
     <div className="provider-tab-container">
-        <div className="tab-title">Select your service(s)</div>
+        <div className="tab-title">Select your service(s):</div>
         <div className='provider-checkboxes-container'>
             {providers.map((provider) => (
                 <div className='provider' key={provider.id}>

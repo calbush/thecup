@@ -155,6 +155,8 @@ body {
 }
 
 .toggle-btns {
+    display: flex;
+    gap: 10px;
     align-self: flex-end;
 }
 
@@ -331,6 +333,23 @@ div.checked {
     padding: 6px;
     width: 100%;
     justify-content: center;
+}
+
+button {
+    font-family: inherit;
+    color: orangered;
+    background-color: greenyellow;
+    border: 2px solid orangered;
+    border-radius: 8px;
+}
+
+button:hover {
+    background-color: green;
+    transition: 0.3s;
+}
+
+button:active {
+    background-color: aliceblue;
 }
 
 /* --------------------CSS Reset----------------------- */
