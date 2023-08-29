@@ -233,7 +233,7 @@ export const Form = ({handleClick}) => {
                     <ProviderCheckboxes providers={providers} handleChange={handleProviderSelection} providerCheckboxes={providerCheckboxes} toggleAll={() => toggleAll(providerCheckboxes, setProviderCheckboxes)} untoggleAll={() => untoggleAll(providerCheckboxes, setProviderCheckboxes)}/>
                                 }
                                 {activeTab === 'rating-popularity' &&
-                                <div>
+                                <div className='rating-popularity-container'>
                     <Rating handleChange={handleRatingChange} rating={rating}/>
                     <Popularity handleChange={handlePopularityChange} popularity={popularity}/>
                                 </div>
