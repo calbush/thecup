@@ -5,9 +5,8 @@ export default function Header(){
         <header className='header'>
             <div className='header-logo'>
                 <img src={logo} alt='plastic red cup' className='main-logo'/>
-                <h1>The Cup</h1>
+                <h1 className='header-text'>The Cup</h1>
             </div>
-            <div>Placeholder for dropdown</div>
         </header>
     )
 }
