@@ -1,7 +1,7 @@
 export default function Rating({handleChange, rating}) {
     return (
         <div id='rating-dropdown-container'>
-            <label htmlFor='rating-dropdown'>Rating:</label>
+            <label htmlFor='rating-dropdown'>Film Rating:</label>
             <select name='rating' id='rating-dropdown' value={rating} onChange={handleChange}>
                 <option value='any'>Any</option>
                 <option value='high'>High</option>
