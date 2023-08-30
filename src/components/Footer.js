@@ -1,11 +1,15 @@
+import logo from '../assets/github-mark.png'
+
 export default function Footer(){
     return (
         <footer className="footer">
-            <div className="react">
-                Placeholder for technologies
+            <a target='_blank' rel='noreferrer' href='https://github.com/calbush' className="links"><img className='github-logo' src={logo} alt='github logo'/></a>
+            <div>
+                <div className="react">
+                    Built with <a href='https://react.dev/'>React</a>
+                </div>
+                <div className="justwatch">Movie data provided by<a href='https://www.justwatch.com/' target='_blank' rel="noreferrer">JustWatch</a></div>
             </div>
-            <div className="links">Placeholder for links</div>
-            <div className="justwatch">Placeholder for justwatch attribution</div>
         </footer>
     )
 }
