@@ -240,7 +240,7 @@ export const Form = ({handleClick}) => {
                                 }
                 </div>
             </div>
-            <button className='form-button' onClick={() => {handleClick(compareParamsHelper, queryParameters, {genreIds, providerIds, popularityMin, popularityMax, ratingMin, ratingMax})}}>Search</button>
+            <button className='form-button' onClick={() => {handleClick(compareParamsHelper, queryParameters, {genreIds, providerIds, popularityMin, popularityMax, ratingMin, ratingMax})}}>Find a movie!</button>
         </div>
     )
 }
