@@ -336,7 +336,6 @@ img.checked {
     align-self: stretch;
     grid-column-start: span 3;
     height: 60px;
-    border-top: 1px solid var(--main-accent-color);
     align-items: center;
     padding: 0px 10px 0px 10px;
     background-color: var(--main-bg-color);
@@ -346,14 +345,12 @@ img.checked {
 
 .footer > div {
     display: flex;
-    flex-direction: column;
-    gap: 3px;
+    gap: 30px;
 }
 
 div.checked {
     background-color: var(--muted-accent-color);
     transition: .2s;
-    border-radius: 8px;
     color: var(--main-bg-color);
 }
 
@@ -375,6 +372,7 @@ div.checked {
     padding: 6px;
     width: 100%;
     justify-content: center;
+    border-radius: 8px;
 }
 
 button {
@@ -397,7 +395,8 @@ button:active {
 }
 
 .justwatch, .react {
-    gap: 3px;
+    display: flex;
+    gap: 2px;
 }
 
 .github-logo {
