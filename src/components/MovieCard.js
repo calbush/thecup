@@ -1,3 +1,5 @@
+import defaultPoster from '../assets/solo_cup_logo.jpeg'
+
 
 export default function MovieCard({ movie }) {
     
@@ -32,7 +34,10 @@ export default function MovieCard({ movie }) {
         <div className="movie-card">
             <div className="movie-card-top-and-middle">
                 <div className="movie-card-top-panel">
-                    <img src={'https://image.tmdb.org/t/p/original/' + movie[1].poster_path} alt='movie poster'/>
+                    {movie[1].poster_path && 
+                    <img src={'https://image.tmdb.org/t/p/original/' + movie[1].poster_path} alt='movie poster'/>}
+                    {!movie[1].poster_path &&
+                    <img src={defaultPoster} alt='no poster found'/>}
                     <div className="title-rating-description">
                         <div className="title-rating">
                             <div className="movie-title">{movie[1].title}</div>
