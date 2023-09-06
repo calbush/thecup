@@ -8,6 +8,8 @@ import ProviderCheckboxes from './ProviderCheckboxes'
 import { isEqual } from 'lodash'
 import '../styles/form.css'
 
+/* Showed movie with only documentary genre when doc was not selected*/
+
 export const Form = ({handleClick}) => {
 
     const [genreIds, setGenreIds] = useState([])
@@ -64,20 +66,26 @@ export const Form = ({handleClick}) => {
 
     const [activeTab, setActiveTab] = useState('genres')
 
-    const toggleAll = (checkboxState, setter) => {
+    const toggleAll = (checkboxState, setCheckboxes, setCheckboxState) => {
         const toggled = {}
+        const toggledArray = []
         for (const property in checkboxState){
             toggled[property] = 'checked'
-        setter(toggled)
+            toggledArray.push(property)
         }
+        setCheckboxes(toggled)
+        setCheckboxState(toggledArray)
     }
 
-    const untoggleAll = (checkboxState, setter) => {
+    const untoggleAll = (checkboxState, setCheckboxes, setCheckboxState) => {
         const untoggled = {}
+        const untoggledArray = []
         for (const property in checkboxState) {
             untoggled[property] = 'unchecked'
+            untoggledArray.push(property)
         }
-        setter(untoggled)
+        setCheckboxes(untoggled)
+        setCheckboxState(untoggledArray)
     }
 
     const options = {
@@ -227,10 +235,10 @@ export const Form = ({handleClick}) => {
                 </div>
                 <div className='tabs-body'>
                                 {activeTab === 'genres' &&
-                    <GenreCheckboxes genres={genres} handleChange={handleGenreSelection} genreCheckboxes={genreCheckboxes} toggleAll={() => toggleAll(genreCheckboxes, setGenreCheckboxes)} untoggleAll={() => untoggleAll(genreCheckboxes, setGenreCheckboxes)}/>
+                    <GenreCheckboxes genres={genres} handleChange={handleGenreSelection} genreCheckboxes={genreCheckboxes} toggleAll={() => toggleAll(genreCheckboxes, setGenreCheckboxes, setGenreIds)} untoggleAll={() => untoggleAll(genreCheckboxes, setGenreCheckboxes, setGenreIds)}/>
                                 }
                                 {activeTab === 'providers' &&
-                    <ProviderCheckboxes providers={providers} handleChange={handleProviderSelection} providerCheckboxes={providerCheckboxes} toggleAll={() => toggleAll(providerCheckboxes, setProviderCheckboxes)} untoggleAll={() => untoggleAll(providerCheckboxes, setProviderCheckboxes)}/>
+                    <ProviderCheckboxes providers={providers} handleChange={handleProviderSelection} providerCheckboxes={providerCheckboxes} toggleAll={() => toggleAll(providerCheckboxes, setProviderCheckboxes, setProviderIds)} untoggleAll={() => untoggleAll(providerCheckboxes, setProviderCheckboxes, setProviderIds)}/>
                                 }
                                 {activeTab === 'rating-popularity' &&
                                 <div className='rating-popularity-container'>
