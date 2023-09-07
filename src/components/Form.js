@@ -8,8 +8,6 @@ import ProviderCheckboxes from './ProviderCheckboxes'
 import { isEqual } from 'lodash'
 import '../styles/form.css'
 
-/* Showed movie with only documentary genre when doc was not selected*/
-
 export const Form = ({handleClick}) => {
 
     const [genreIds, setGenreIds] = useState([])
