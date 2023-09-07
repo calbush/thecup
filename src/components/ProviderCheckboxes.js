@@ -10,8 +10,8 @@ export default function ProviderCheckboxes({providers, handleChange, providerChe
             ))}
         </div>
         <div className="toggle-btns">
-            <button className='toggle-btn' onClick={toggleAll}>Check All</button>
-            <button className='toggle-btn' onClick={untoggleAll}>Uncheck All</button>
+            <button className='toggle-btn' onClick={toggleAll}>Select All</button>
+            <button className='toggle-btn' onClick={untoggleAll}>Clear All</button>
         </div>
     </div>
     )
