@@ -228,8 +228,8 @@ export const Form = ({handleClick}) => {
             <div className='form-card'>
                 <div className='tabs-header'>
                     <div onClick={handleTabChange} id='genres' className='tab genres-tab active-tab'>Genres</div>
-                    <div onClick={handleTabChange} id='providers' className='tab providers-tab'>Streaming Services</div>
-                    <div onClick={handleTabChange} id='rating-popularity' className='tab rating-popularity-tab'>Rating/Popularity</div>
+                    <div onClick={handleTabChange} id='providers' className='tab providers-tab'>Services</div>
+                    <div onClick={handleTabChange} id='rating-popularity' className='tab rating-popularity-tab'>Rating</div>
                 </div>
                 <div className='tabs-body'>
                                 {activeTab === 'genres' &&
