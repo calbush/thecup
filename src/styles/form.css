@@ -15,10 +15,69 @@
     --alt-font: white;
 }
 
-/* * {
-    outline-style: dotted;
-    outline-color: orange;
-} */
+@media all and (width > 600px){
+
+    .form-card{
+        min-width: 550px;
+        max-width: 850px;
+    }
+
+    .genre-checkboxes-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        gap: 2px;
+    }
+
+    .provider-checkboxes-container {
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .movie-card {
+        width: 500px;
+    }
+}
+
+@media all and (width <= 600px){
+
+    .genre-checkboxes-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+    }
+
+    .provider-checkboxes-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        row-gap: 6px;
+    }
+
+    .form-card {
+        width: 90vw;
+    }
+
+    .tab {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .provider {
+        align-self: center;
+        justify-self: center;
+    }
+
+    .movie-card {
+        width: 90vw;
+    }
+
+}
+
 
 html {
     height: 100vh;
@@ -33,11 +92,10 @@ body {
 }
 
 .app {
-    min-height: 100%;
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 65% 1fr;
     gap: 40px;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
     font-family: 'Oswald';
     background-color: var(--main-bg-color);
 }
@@ -56,26 +114,19 @@ body {
     display: flex;
 }
 
-.main-logo {
-    height: 100px;
-    width: auto;
-}
-
 .form {
-    grid-column-start: 2;
-    display: grid;
-    grid-template-rows: 8fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 40px;
-    width: 100%;
-    justify-self: center;
+    align-items: center;
 }
 
 .movie-card {
     background-color: var(--muted-bg-color);
     padding: 6px;
     grid-column-start: 2;
-    width: 500px;
     justify-self: center;
+    align-self: center;
     border: 2px solid black;
     border-radius: 8px;
     box-shadow: 2px 2px 8px black;
@@ -83,20 +134,13 @@ body {
 }
 
 .form-card {
-    display: flex;
-    flex-direction: column;
-    height: 330px;
-    border: 1px solid black;
-    border-top: none;
-    border-radius: 8px;
     box-shadow: 2px 10px 15px black;
 }
 
 .tabs-header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    border-radius: 10px 10px 0px 0px;
-    border-top: 1px solid black;
+    border-radius: 8px 8px 0px 0px;
     background-color: var(--muted-accent-color);
 }
 
@@ -154,13 +198,6 @@ body {
     gap: 10px;
 }
 
-.genre-checkboxes-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    gap: 2px;
-}
-
 .genre-checkboxes-container, .provider-checkboxes-container {
     border: 2px solid black;
     border-radius: 8px;
@@ -191,15 +228,6 @@ body {
     border: 1px solid black;
 }
 
-.provider-checkboxes-container {
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    justify-items: center;
-    align-items: center;
-    gap: 10px;
-}
-
 .provider-selection {
     display: flex;
     flex-direction: column;
@@ -221,6 +249,10 @@ img.checked {
     width: 200px;
     justify-self: center;
     font-size: large;
+}
+
+.placeholder {
+    grid-column-start: 2;
 }
 
 .movie-card-header {
@@ -402,6 +434,7 @@ button:active {
 .github-logo {
     width: 30px;
 }
+
 
 /* --------------------CSS Reset----------------------- */
 
