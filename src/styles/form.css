@@ -72,6 +72,15 @@
         justify-self: center;
     }
 
+    .tabs-body {
+        min-height: 300px;
+    }
+
+    .rating-popularity-container {
+        height: 200px;
+        padding: 20px;
+    }
+
     .movie-card {
         width: 90vw;
     }
@@ -347,8 +356,12 @@ img.checked {
 .rating-popularity-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    background-color: var(--main-bg-color);
     gap: 30px;
-    color: var(--alt-font)
+    color: var(--alt-font);
+    border: 2px solid black;
+    border-radius: 8px;
 }
 
 .rating-popularity-container > div {
