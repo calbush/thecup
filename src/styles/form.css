@@ -38,8 +38,37 @@
         gap: 10px;
     }
 
+    .rating-popularity-container {
+        height: 150px;
+        width: 500px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .tabs-body {
+        min-height: 300px;
+    }
+
     .movie-card {
         width: 500px;
+    }
+
+    .tab:hover:not(.active-tab) {
+        color: var(--main-accent-color);
+    }
+
+    .unchecked:hover {
+        color: var(--main-accent-color);
+    }
+
+    button:hover {
+        background-color: var(--muted-accent-color);
+        transition: 0.3s;
+    }
+
+    button:active {
+        background-color: aliceblue;
+        transition: 0.1s;
     }
 }
 
@@ -162,10 +191,6 @@ body {
     font-weight: bolder;
 }
 
-.tab:hover:not(.active-tab) {
-    color: var(--main-accent-color);
-}
-
 .genres-tab {
     border-right: 1px solid black;
     border-radius: 8px 0px 0px 0px;
@@ -220,10 +245,6 @@ body {
     display: flex;
     gap: 10px;
     align-self: flex-end;
-}
-
-.unchecked:hover {
-    color: var(--main-accent-color);
 }
 
 .services {
@@ -427,16 +448,6 @@ button {
     border: 2px solid var(--main-accent-color);
     border-radius: 500px;
     padding: 4px 20px 4px 20px;
-}
-
-button:hover {
-    background-color: var(--muted-accent-color);
-    transition: 0.3s;
-}
-
-button:active {
-    background-color: aliceblue;
-    transition: 0.1s;
 }
 
 .justwatch, .react {
