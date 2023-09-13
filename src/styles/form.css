@@ -65,11 +65,6 @@
         background-color: var(--muted-accent-color);
         transition: 0.3s;
     }
-
-    button:active {
-        background-color: aliceblue;
-        transition: 0.1s;
-    }
 }
 
 @media all and (width <= 600px){
@@ -112,6 +107,12 @@
 
     .movie-card {
         width: 90vw;
+    }
+
+    .movie-card-top-panel {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid black;
     }
 
 }
@@ -302,16 +303,15 @@ img.checked {
     height: 200px;
     width: 150px;
     align-self: center;
-    border: 1px solid black;
+    border: 2px solid var(--muted-accent-color);
+    border-radius: 8px;
 }
 
-.movie-card-top-and-middle  {
-    border-bottom: 1px solid black;
-    padding: 6px;
-}
 .movie-card-middle-panel {
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid black;
+    padding-bottom: 3px;
 }
 
 .movie-card-bottom-panel {
@@ -457,6 +457,11 @@ button {
 
 .github-logo {
     width: 30px;
+}
+
+button:active {
+    background-color: aliceblue;
+    transition: 0.1s;
 }
 
 
