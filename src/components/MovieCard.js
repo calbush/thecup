@@ -32,7 +32,6 @@ export default function MovieCard({ movie }) {
 
     return (
         <div className="movie-card">
-            <div className="movie-card-top-and-middle">
                 <div className="movie-card-top-panel">
                     {movie[1].poster_path && 
                     <img src={'https://image.tmdb.org/t/p/original/' + movie[1].poster_path} alt='movie poster'/>}
@@ -66,7 +65,6 @@ export default function MovieCard({ movie }) {
                             )
                         })}</div>
                 </div>
-            </div>
                 <div className="movie-card-bottom-panel">
                     {flatrateServices &&
                         <div className="movie-subscription-services">
