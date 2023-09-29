@@ -424,6 +424,14 @@ div.checked {
     font-size: 3rem;
     justify-self: center;
     align-self: center;
+    display: flex;
+    gap: 8px;
+}
+
+.small-title {
+    font-size: medium;
+    color: var(--muted-accent-color);
+    align-self: flex-end;
 }
 
 .genre {
