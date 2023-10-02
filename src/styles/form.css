@@ -309,9 +309,11 @@ img.checked {
 
 .movie-card-middle-panel {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     border-bottom: 1px solid black;
     padding-bottom: 3px;
+    gap: 6px;
 }
 
 .movie-card-bottom-panel {
@@ -349,17 +351,20 @@ img.checked {
 
 .middle-panel-left {
     color: var(--muted-accent-color);
+    display: flex;
+    flex-direction: column;
 }
 
 .movie-panel-right {
     display: flex;
     gap: 3px;
-    align-items: flex-end;
     color: var(--muted-accent-color);
+    flex-wrap: wrap;
 }
 
 .movie-info {
     padding-top: 3px;
+    align-self: flex-end;
 }
 
 .streaming-services {
