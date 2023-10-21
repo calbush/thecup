@@ -137,6 +137,7 @@ body {
     flex-direction: column;
     font-family: 'Oswald';
     background-color: var(--main-bg-color);
+    justify-content: space-between;
 }
 
 .header {
